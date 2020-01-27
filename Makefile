@@ -41,4 +41,8 @@ docker_start:
 docker_stop:
 	@docker-compose down
 
-setup: docker_setup docker_makemigrations docker_migrate docker_start
+start_local_venv: # helps with local development
+	@python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+	@npm install
+
+setup: start_local_venv docker_setup docker_makemigrations docker_migrate docker_start
