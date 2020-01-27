@@ -5,7 +5,7 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser):
-    username = models.CharField(max_length=255)
+    username = models.CharField(max_length=255, unique=True)
 
     USERNAME_FIELD = 'username'
 

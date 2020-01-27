@@ -30,7 +30,6 @@ docker_stop_everything: # stops everything that's running in Docker in your comp
 	@docker ps -a -q | xargs docker stop
 
 docker_setup:
-	cp -n frontend/.env.example frontend/.env || true
 	cp -n backend/.env.example backend/.env || true
 	@docker-compose build frontend
 	@docker-compose build backend
@@ -42,4 +41,4 @@ docker_start:
 docker_stop:
 	@docker-compose down
 
-setup: docker_makemigrations docker_migrate docker_setup docker_start
+setup: docker_setup docker_makemigrations docker_migrate docker_start
