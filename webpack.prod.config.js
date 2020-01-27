@@ -7,18 +7,17 @@ var path = require('path');
 var nodeModulesDir = path.resolve(__dirname, 'node_modules');
 
 baseConfig[0].mode = 'production';
-baseConfig[1].mode = 'production';
-baseConfig[1].devtool = 'source-map';
+baseConfig[0].devtool = 'source-map';
 
-baseConfig[1].entry = ['whatwg-fetch', '@babel/polyfill', './frontend/js/index.js'];
+baseConfig[0].entry = ['whatwg-fetch', '@babel/polyfill', './frontend/js/index.js'];
 
-baseConfig[1].output = {
+baseConfig[0].output = {
   path: path.resolve('./frontend/webpack_bundles/'),
   publicPath: '',
   filename: '[name]-[hash].js',
 };
 
-baseConfig[1].module.rules.push(
+baseConfig[0].module.rules.push(
   {
     test: /\.jsx?$/,
     exclude: [nodeModulesDir],
@@ -35,9 +34,9 @@ baseConfig[1].module.rules.push(
   }
 );
 
-baseConfig[1].optimization = { minimize: true };
+baseConfig[0].optimization = { minimize: true };
 
-baseConfig[1].plugins = [
+baseConfig[0].plugins = [
   new webpack.DefinePlugin({
     // removes React warnings
     'process.env': {

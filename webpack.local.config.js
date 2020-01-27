@@ -6,9 +6,8 @@ var path = require('path');
 var nodeModulesDir = path.resolve(__dirname, 'node_modules');
 
 baseConfig[0].mode = 'development';
-baseConfig[1].mode = 'development';
 
-baseConfig[1].entry = [
+baseConfig[0].entry = [
   'webpack-dev-server/client?http://localhost:3000',
   'webpack/hot/only-dev-server',
   'whatwg-fetch',
@@ -16,14 +15,13 @@ baseConfig[1].entry = [
   './frontend/js/index',
 ];
 
-baseConfig[0].output['publicPath'] = 'http://localhost:3000/frontend/bundles/';
-baseConfig[1].output = {
+baseConfig[0].output = {
   path: path.resolve('./frontend/bundles/'),
   publicPath: 'http://localhost:3000/frontend/bundles/',
   filename: '[name].js',
 };
 
-baseConfig[1].module.rules.push(
+baseConfig[0].module.rules.push(
   {
     test: /\.jsx?$/,
     exclude: [nodeModulesDir],
@@ -35,7 +33,7 @@ baseConfig[1].module.rules.push(
   }
 );
 
-baseConfig[1].plugins = [
+baseConfig[0].plugins = [
   new webpack.EvalSourceMapDevToolPlugin({
     exclude: /node_modules/,
   }),
