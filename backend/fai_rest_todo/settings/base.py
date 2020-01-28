@@ -58,8 +58,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "common.context_processors.sentry_dsn",
-                "common.context_processors.commit_sha",
             ],
         },
     },
@@ -95,12 +93,8 @@ WEBPACK_LOADER = {
         "STATS_FILE": base_dir_join("../webpack-stats.json"),
         "POLL_INTERVAL": 0.1,
         "IGNORE": [
-            ".+\.hot-update.js",
-            ".+\.map",
-        ],  # pylint: disable=anomalous-backslash-in-string
-    },
-    "JQUERY": {
-        "BUNDLE_DIR_NAME": "bundles/",
-        "STATS_FILE": base_dir_join("../jquery-webpack-stats.json"),
-    },
+            r".+\.hot-update.js",
+            r".+\.map",
+        ],
+    }
 }

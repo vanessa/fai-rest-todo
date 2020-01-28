@@ -54,9 +54,6 @@ baseConfig[0].plugins = [
     },
   }),
   new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery',
-    'window.jQuery': 'jquery',
     Tether: 'tether',
     'window.Tether': 'tether',
     Popper: ['popper.js', 'default'],

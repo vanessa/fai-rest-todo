@@ -37,7 +37,7 @@ docker_setup:
 	@docker-compose build backend
 
 docker_start:
-	@docker-compose up -d backend
+	@docker-compose up -d backend frontend
 	@docker-compose logs --tail=20 -f backend frontend
 
 docker_stop:
