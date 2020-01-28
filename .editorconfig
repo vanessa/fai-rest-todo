@@ -1,5 +1,3 @@
-# editorconfig.org
-
 root = true
 
 [*]
@@ -10,7 +8,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 end_of_line = lf
 
-[*.js]
+[*.{js,jsx}]
 indent_size = 2
 
 [*.html]
