@@ -16,6 +16,18 @@ docker_npm_install: # installs a package for frontend
 	@docker-compose up -d frontend backend
 	@docker-compose logs --tail=20 -f frontend backend
 
+docker_pip_install: # install a package for backend
+	@if cat requirements.txt | grep -cim1 $(ARG) > /dev/null; then \
+		echo ">> $(ARG) já existe no requirements.txt, parando."; \
+	else \
+		echo $(ARG) >> requirements.txt && \
+		echo ">> Rebuildando container do backend para atualizar dependências" && \
+		docker-compose build --no-cache backend && \
+		docker-compose stop backend && \
+		docker-compose up -d backend frontend && \
+		docker-compose logs --tail=20 -f backend frontend; \
+	fi;
+
 docker_test:
 	docker-compose run --rm backend \
 		python manage.py test $(ARG) --parallel --keepdb
