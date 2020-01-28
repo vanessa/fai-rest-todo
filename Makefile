@@ -20,9 +20,12 @@ docker_pip_install: # install a package for backend
 	@if cat requirements.txt | grep -cim1 $(ARG) > /dev/null; then \
 		echo ">> $(ARG) já existe no requirements.txt, parando."; \
 	else \
+		echo ">> Adicionando dependência no requirements.txt" && \
 		echo $(ARG) >> requirements.txt && \
 		echo ">> Rebuildando container do backend para atualizar dependências" && \
 		docker-compose build --no-cache backend && \
+	  	echo ">> Atualizando requirements.txt com versões instaladas" && \
+		docker-compose run --rm backend pip freeze > requirements.txt && \
 		docker-compose stop backend && \
 		docker-compose up -d backend frontend && \
 		docker-compose logs --tail=20 -f backend frontend; \
@@ -56,12 +59,20 @@ docker_stop_everything: # stops everything that's running in Docker in your comp
 docker_setup:
 	@echo ">> Copiando .env e buildando containers"
 	cp -n backend/.env.example backend/.env || true
+	cp -n frontend/.env.example frontend/.env || true
 	@docker-compose build frontend
 	@docker-compose build backend
 
 docker_start:
 	@docker-compose up -d backend frontend
 	@docker-compose logs --tail=20 -f backend frontend
+
+docker_create_superuser:
+	@docker-compose run --rm backend \
+		./manage.py shell -c "from django.contrib.auth import get_user_model; \
+			User = get_user_model(); \
+			User.objects.create_superuser('admin', 'admin@admin.com', '123')" && \
+		echo "Created superuser. Login: admin | 123"
 
 docker_restart:
 	@docker-compose stop backend frontend
