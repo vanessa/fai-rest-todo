@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "webpack_loader",
     "users",
-    "todos"
+    "todos",
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = (base_dir_join("../frontend"),)
+STATICFILES_DIRS = (base_dir_join("../frontend"), base_dir_join("static"))
 
 # Webpack
 WEBPACK_LOADER = {
@@ -93,9 +93,6 @@ WEBPACK_LOADER = {
         "CACHE": not DEBUG,  # on DEBUG should be False
         "STATS_FILE": base_dir_join("../webpack-stats.json"),
         "POLL_INTERVAL": 0.1,
-        "IGNORE": [
-            r".+\.hot-update.js",
-            r".+\.map",
-        ],
+        "IGNORE": [r".+\.hot-update.js", r".+\.map",],
     }
 }
