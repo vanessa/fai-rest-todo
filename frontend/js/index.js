@@ -5,4 +5,9 @@ import ReactDOM from 'react-dom';
 
 import App from './app';
 
-ReactDOM.render(<App />, document.getElementById('react-app'));
+const container = document.getElementById('react-app');
+
+if (container) {
+  ReactDOM.render(<App />, container);
+}
+

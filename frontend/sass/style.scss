@@ -29,8 +29,57 @@ h1 {
   }
 }
 
-.link {
+.login-form {
+  max-width: 300px;
+  margin: 50px auto;
+  text-align: center;
+
+  .errorlist {
+    color: darkred;
+  }
+
+  > p {
+    > label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      border: 0;
+      border-radius: 3px;
+      box-shadow: 0 2px 8px transparentize(#000, 0.9);
+      padding: 10px;
+      font-family: inherit;
+    }
+  }
+
+  input[type='submit'] {
+    display: block;
+    margin: 10px auto;
+    background: #666;
+    border: 0;
+    font-family: inherit;
+    padding: 10px 35px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+}
+
+.link, a {
   color: #666;
+}
+
+.greeting {
+  font-weight: 500;
+}
+
+p {
+  font-size: 14px;
 }
 
 .page-wrapper {
@@ -54,7 +103,7 @@ h1 {
     border-radius: 5px 5px 0 0;
 
     .progress-bar-inner {
-      transition: width .2s ease-in-out;
+      transition: width 0.2s ease-in-out;
       position: absolute;
       height: 100%;
       top: 0;
@@ -68,7 +117,7 @@ h1 {
     $btn-color-hover: lighten($btn-color, 30%);
 
     text-align: initial;
-    transition: opacity .2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
     padding: 14px 0;
     display: flex;
     align-items: center;
@@ -134,7 +183,7 @@ h1 {
 
     &::placeholder {
       font-style: italic;
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 

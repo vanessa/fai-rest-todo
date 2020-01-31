@@ -8,7 +8,7 @@ var nodeModulesDir = path.resolve(__dirname, 'node_modules');
 baseConfig[0].mode = 'development';
 
 baseConfig[0].entry = [
-  'webpack-dev-server/client?http://localhost:3000',
+  'webpack-dev-server/client?http://localhost:3000/__webpack_hmr',
   'webpack/hot/only-dev-server',
   'whatwg-fetch',
   '@babel/polyfill',
