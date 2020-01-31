@@ -5,8 +5,6 @@ import { Helmet } from 'react-helmet';
 
 import { Home } from './pages';
 
-import Logo from '../img/logo.svg';
-
 const App = () => (
   <div className="wrapper">
     <Helmet>
@@ -14,7 +12,7 @@ const App = () => (
     </Helmet>
     <div className="header">
       <h1>
-        <img src={Logo} width="34" /> TODO List
+        <img src="/static/images/logo.svg" width="34" /> TODO List
       </h1>
     </div>
     <Home />
