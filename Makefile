@@ -84,7 +84,7 @@ docker_stop:
 
 start_local_venv: # helps with local development
 	@echo ">> Instalando requisitos necessários para desenvolvimento local..."
-	@python -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+	@python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
 	@npm install
 
 setup: start_local_venv docker_setup docker_makemigrations docker_migrate docker_start

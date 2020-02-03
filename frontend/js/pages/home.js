@@ -3,18 +3,16 @@ import React from 'react';
 import TodoList from 'components/list';
 import TodoForm from 'components/form';
 
-const MOCK_ITEMS = [
-  { id: 1, title: 'earum aspernatur quod', is_done: false },
-  { id: 2, title: 'dolorem voluptatem voluptatum', is_done: true },
-  { id: 3, title: 'sed labore iusto', is_done: false, tags: [{ id: 1, title: 'importante' }] },
-  { id: 4, title: 'saepe voluptas neque', is_done: true, tags: [{ id: 2, title: 'comprar' }] },
-];
+import Api from 'utils/api';
+import Context from 'utils/context';
 
 const Home = () => {
+  const { state, setState } = React.useContext(Context);
+  const { todos } = state
 
   React.useEffect(() => {
-    console.log('TODO: Puxar do backend');
-  }, [])
+    Api.getTodos().then((data) => setState({ todos: data }));
+  }, []);
 
   return (
     <div className="page-wrapper">
@@ -31,7 +29,7 @@ const Home = () => {
         GitHub
       </a>
       <TodoForm />
-      <TodoList items={MOCK_ITEMS} />
+      <TodoList items={todos} />
     </div>
   );
 };
