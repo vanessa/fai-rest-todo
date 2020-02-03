@@ -3,9 +3,6 @@ import cookie from 'cookie';
 
 const initializeApi = () => {
   const api = axios.create({ responseType: 'json' });
-  // TODO: Is this needed?
-  // api.defaults.xsrfCookieName = 'csrftoken';
-  // api.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
   api.interceptors.request.use((config) => {
     const { csrftoken } = cookie.parse(document.cookie);
     const updatedConfig = config; // Cria uma cópia das configurações atuais, nunca modificar a original
