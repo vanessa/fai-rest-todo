@@ -29,7 +29,7 @@
     "expose-loader": "~0.7.3",
     "file-loader": "~5.0.2",
     "imports-loader": "~0.8.0",
-    "lodash": "~4.17.4",
+    "lodash": "~4.17.19",
     "marked": "~0.8.0",
     "node-sass": "^4.13",
     "popper.js": "~1.16.0",
