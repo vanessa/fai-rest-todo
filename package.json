@@ -50,7 +50,7 @@
     "url-loader": "~4.1.1",
     "webpack": "~5.75.0",
     "webpack-bundle-tracker": "~0.4.2-beta",
-    "webpack-dev-server": "~3.8.0",
+    "webpack-dev-server": "~3.11.3",
     "whatwg-fetch": "~2.0.3"
   },
   "devDependencies": {
